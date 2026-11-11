@@ -1,0 +1,6 @@
+{
+  "name": "SmartLearn LMS & OS Kernel Studio",
+  "description": "An Operating Systems-powered Learning Management System featuring live CPU process scheduling, Banker's deadlock avoidance, LRU page caching, SSTF/SCAN disk I/O scheduling, reader-writer lock synchronization, and interactive OS algorithm simulators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

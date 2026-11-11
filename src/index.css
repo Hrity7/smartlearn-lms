@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    /* Modern Skeuomorphism Palette */
+    --skeuo-bg: #E5E0D8;
+    --skeuo-surface-primary: #F4F0E8;
+    --skeuo-surface-secondary: #D8D1C5;
+    --skeuo-accent-blue: #315C83;
+    --skeuo-accent-brass: #B58A54;
+    --skeuo-text-primary: #252B32;
+    --skeuo-text-secondary: #73777C;
+    --skeuo-success: #54866A;
+    --skeuo-warning: #D49A43;
+    --skeuo-error: #B85C55;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--skeuo-text-primary);
+    background-color: var(--skeuo-bg);
+    background-image:
+      radial-gradient(rgba(37, 43, 50, 0.03) 1px, transparent 0),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(216, 209, 197, 0.2) 100%);
+    background-size: 20px 20px, 100% 100%;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    letter-spacing: -0.018em;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.engraved-label {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+/* ============================================================================
+   MODERN SKEUOMORPHISM COMPONENT SYSTEM
+   Physical layered materials, machined bevels, recessed wells, and tactile switches.
+   ============================================================================ */
+
+/* Top Brushed Toolbar */
+.skeuo-toolbar {
+  background: linear-gradient(180deg, #F7F4EE 0%, #EAE4D9 100%);
+  border-bottom: 1px solid #BFB7A9;
+  box-shadow:
+    0 2px 6px rgba(37, 43, 50, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Physical Control Panel Sidebar */
+.skeuo-control-panel {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.14) 0px,
+      rgba(255, 255, 255, 0.14) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    linear-gradient(180deg, #EDE8DF 0%, #DDD6C9 100%);
+  border-radius: 14px;
+  border: 1px solid #BDB4A5;
+  box-shadow:
+    0 8px 20px rgba(37, 43, 50, 0.11),
+    0 2px 4px rgba(37, 43, 50, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(37, 43, 50, 0.08);
+}
+
+/* Primary Layered Card Surface (#F4F0E8) */
+.skeuo-card {
+  background: linear-gradient(180deg, #F8F5EE 0%, #F1ECE2 100%);
+  border-radius: 12px;
+  border: 1px solid #C6BEB0;
+  box-shadow:
+    0 5px 14px rgba(37, 43, 50, 0.075),
+    0 1px 3px rgba(37, 43, 50, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    inset 0 -1px 0 rgba(181, 138, 84, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.skeuo-card-interactive:hover {
+  transform: translateY(-1.5px);
+  border-color: #B4AA99;
+  box-shadow:
+    0 8px 20px rgba(37, 43, 50, 0.11),
+    0 2px 5px rgba(37, 43, 50, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
+}
+
+/* Secondary Recessed Chassis / Tray (#D8D1C5) */
+.skeuo-tray {
+  background: linear-gradient(180deg, #D3CBBF 0%, #DFD9CE 100%);
+  border-radius: 10px;
+  border: 1px solid #B8AFA0;
+  box-shadow:
+    inset 0 2px 5px rgba(37, 43, 50, 0.14),
+    inset 0 1px 2px rgba(37, 43, 50, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Physical Display Readout Panel (For KPIs & Counters) */
+.skeuo-display-panel {
+  background: linear-gradient(180deg, #D2CBC0 0%, #DED8CD 100%);
+  border-radius: 9px;
+  border: 1px solid #B0A798;
+  box-shadow:
+    inset 0 2px 6px rgba(37, 43, 50, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* Dark Instrument Readout Window (For Lecture Stage & Technical Displays) */
+.skeuo-instrument-screen {
+  background: linear-gradient(180deg, #1E242B 0%, #272E37 100%);
+  border-radius: 10px;
+  border: 2px solid #B6ADA0;
+  box-shadow:
+    inset 0 3px 10px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* Course Media Bezel Frame */
+.skeuo-media-frame {
+  background: linear-gradient(180deg, #2B333C 0%, #1F252C 100%);
+  border-radius: 9px;
+  border: 1px solid #ACA393;
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* Physical Beveled Standard Button */
+.skeuo-btn {
+  background: linear-gradient(180deg, #FAF7F1 0%, #E7E0D3 100%);
+  color: #252B32;
+  border-radius: 8px;
+  border: 1px solid #B6AD9E;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 2px 0 #ABA192,
+    0 3px 5px rgba(37, 43, 50, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition: transform 100ms ease, box-shadow 100ms ease, background 120ms ease;
+  cursor: pointer;
+}
+
+.skeuo-btn:hover {
+  background: linear-gradient(180deg, #FDFBF7 0%, #EDE7DB 100%);
+  border-color: #A89E8E;
+}
+
+.skeuo-btn:active,
+.skeuo-btn-pressed {
+  transform: translateY(1.5px);
+  background: linear-gradient(180deg, #D5CEC1 0%, #E2DDD2 100%);
+  border-color: #9E9586;
+  box-shadow:
+    inset 0 2px 4px rgba(37, 43, 50, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+/* Physical Primary Deep Blue Button (#315C83) */
+.skeuo-btn-primary {
+  background: linear-gradient(180deg, #3D6E99 0%, #2A5073 100%);
+  color: #F4F0E8;
+  border-radius: 8px;
+  border: 1px solid #1E3D59;
+  font-weight: 600;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 2px 0 #173047,
+    0 3px 6px rgba(37, 43, 50, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition: transform 100ms ease, box-shadow 100ms ease, background 120ms ease;
+  cursor: pointer;
+}
+
+.skeuo-btn-primary:hover {
+  background: linear-gradient(180deg, #4377A4 0%, #2F597F 100%);
+}
+
+.skeuo-btn-primary:active {
+  transform: translateY(1.5px);
+  background: linear-gradient(180deg, #244666 0%, #315C83 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.42),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Physical Muted Brass Button (#B58A54) */
+.skeuo-btn-brass {
+  background: linear-gradient(180deg, #C69B63 0%, #A47A43 100%);
+  color: #FFFDF9;
+  border-radius: 8px;
+  border: 1px solid #825E30;
+  font-weight: 600;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 2px 0 #6A4C25,
+    0 3px 6px rgba(37, 43, 50, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 100ms ease, box-shadow 100ms ease;
+  cursor: pointer;
+}
+
+.skeuo-btn-brass:hover {
+  background: linear-gradient(180deg, #CEA36B 0%, #AD824A 100%);
+}
+
+.skeuo-btn-brass:active {
+  transform: translateY(1.5px);
+  background: linear-gradient(180deg, #946D39 0%, #B58A54 100%);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Sidebar Navigation Control Key */
+.skeuo-nav-item {
+  background: linear-gradient(180deg, rgba(248, 245, 238, 0.7) 0%, rgba(231, 224, 211, 0.7) 100%);
+  border: 1px solid rgba(182, 173, 158, 0.75);
+  border-radius: 8px;
+  color: #4A5056;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 1px 2px rgba(37, 43, 50, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  transition: all 120ms ease;
+  cursor: pointer;
+}
+
+.skeuo-nav-item:hover {
+  background: linear-gradient(180deg, #FAF7F1 0%, #EBE4D8 100%);
+  color: #252B32;
+  border-color: #ADA393;
+}
+
+.skeuo-nav-item-active {
+  background: linear-gradient(180deg, #CFC7B9 0%, #DBD4C8 100%);
+  border: 1px solid #9E9586;
+  border-radius: 8px;
+  color: #252B32;
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow:
+    inset 0 2px 5px rgba(37, 43, 50, 0.22),
+    inset 0 1px 2px rgba(37, 43, 50, 0.15),
+    0 1px 0 rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+}
+
+/* Physical Recessed Input Field */
+.skeuo-input {
+  background: linear-gradient(180deg, #DFD9CE 0%, #EAE4DA 35%, #F2EEE6 100%);
+  color: #252B32;
+  border-radius: 8px;
+  border: 1px solid #ABA192;
+  box-shadow:
+    inset 0 2px 4px rgba(37, 43, 50, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.85);
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.skeuo-input::placeholder {
+  color: #73777C;
+}
+
+.skeuo-input:focus {
+  outline: none;
+  background: #F9F6F0;
+  border-color: #315C83;
+  box-shadow:
+    inset 0 2px 4px rgba(37, 43, 50, 0.12),
+    0 0 0 2px rgba(49, 92, 131, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Recessed Progress Track & Raised Metallic Progress Bars */
+.skeuo-progress-track {
+  background: linear-gradient(180deg, #C7BFB1 0%, #D9D2C6 100%);
+  border-radius: 9999px;
+  border: 1px solid #A79E8F;
+  box-shadow:
+    inset 0 2px 3px rgba(37, 43, 50, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  padding: 1px;
+  overflow: hidden;
+}
+
+.skeuo-progress-fill-blue {
+  background: linear-gradient(180deg, #4B7EAE 0%, #315C83 55%, #244767 100%);
+  border-radius: 9999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: width 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skeuo-progress-fill-brass {
+  background: linear-gradient(180deg, #CD9F65 0%, #B58A54 55%, #946D3C 100%);
+  border-radius: 9999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: width 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skeuo-progress-fill-green {
+  background: linear-gradient(180deg, #6BA083 0%, #54866A 55%, #3F6851 100%);
+  border-radius: 9999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: width 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Physical Toggle Switch */
+.skeuo-switch-track {
+  width: 52px;
+  height: 26px;
+  border-radius: 9999px;
+  border: 1px solid #9B9283;
+  box-shadow:
+    inset 0 2px 4px rgba(37, 43, 50, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.85);
+  position: relative;
+  transition: background 180ms ease;
+  cursor: pointer;
+}
+
+.skeuo-switch-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #FCF9F4 0%, #DFD8CA 100%);
+  border: 1px solid #9E9586;
+  box-shadow:
+    0 2px 4px rgba(37, 43, 50, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  position: absolute;
+  top: 1px;
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Status LED Indicator Dot */
+.skeuo-led-blue {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 35%, #6CA6DA, #315C83 70%, #1D3B56 100%);
+  box-shadow: 0 0 6px rgba(49, 92, 131, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.skeuo-led-green {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 35%, #84C29F, #54866A 70%, #375C47 100%);
+  box-shadow: 0 0 6px rgba(84, 134, 106, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.skeuo-led-amber {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 35%, #F2BE68, #D49A43 70%, #966822 100%);
+  box-shadow: 0 0 6px rgba(212, 154, 67, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Decorative Corner Screw / Rivet */
+.skeuo-rivet {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #D5CEC2 0%, #9E9689 100%);
+  border: 1px solid #8A8275;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeuo-card,
+  .skeuo-btn,
+  .skeuo-btn-primary,
+  .skeuo-btn-brass,
+  .skeuo-progress-fill-blue,
+  .skeuo-progress-fill-brass,
+  .skeuo-progress-fill-green,
+  .skeuo-switch-thumb {
+    transition: none !important;
+  }
+}

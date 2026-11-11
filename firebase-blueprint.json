@@ -1,0 +1,166 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile and settings document stored in Firestore.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID matching the document ID.",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address.",
+          "maxLength": 120
+        },
+        "fullName": {
+          "type": "string",
+          "description": "User full display name.",
+          "maxLength": 100
+        },
+        "role": {
+          "type": "string",
+          "description": "User platform role.",
+          "enum": ["admin", "faculty", "student"]
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Avatar photo URL.",
+          "maxLength": 500
+        },
+        "bio": {
+          "type": "string",
+          "description": "User bio or academic department.",
+          "maxLength": 500
+        },
+        "weeklyGoalHours": {
+          "type": "number",
+          "description": "Weekly study quota hours."
+        },
+        "notificationsEnabled": {
+          "type": "boolean",
+          "description": "Whether user notifications are enabled."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of account creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last profile update."
+        }
+      },
+      "required": ["userId", "email", "fullName", "role", "createdAt"]
+    },
+    "UserEnrollment": {
+      "title": "UserEnrollment",
+      "description": "Record of a student's enrollment in a course.",
+      "type": "object",
+      "properties": {
+        "courseId": {
+          "type": "number",
+          "description": "Unique identifier of the course."
+        },
+        "courseCode": {
+          "type": "string",
+          "description": "Course code (e.g., CS-101).",
+          "maxLength": 20
+        },
+        "courseTitle": {
+          "type": "string",
+          "description": "Course title.",
+          "maxLength": 150
+        },
+        "enrolledAt": {
+          "type": "string",
+          "description": "ISO timestamp of enrollment."
+        },
+        "progressPercent": {
+          "type": "number",
+          "description": "Current percentage of course completion."
+        }
+      },
+      "required": ["courseId", "courseCode", "courseTitle", "enrolledAt"]
+    },
+    "CompletedMaterial": {
+      "title": "CompletedMaterial",
+      "description": "Record of a completed course lesson or material.",
+      "type": "object",
+      "properties": {
+        "materialId": {
+          "type": "number",
+          "description": "ID of the completed learning material."
+        },
+        "courseId": {
+          "type": "number",
+          "description": "ID of the associated course."
+        },
+        "completedAt": {
+          "type": "string",
+          "description": "ISO timestamp when the lesson was completed."
+        }
+      },
+      "required": ["materialId", "courseId", "completedAt"]
+    },
+    "UserStudyNote": {
+      "title": "UserStudyNote",
+      "description": "Personal lesson note saved by the student.",
+      "type": "object",
+      "properties": {
+        "materialId": {
+          "type": "number",
+          "description": "ID of the learning material."
+        },
+        "courseId": {
+          "type": "number",
+          "description": "ID of the course."
+        },
+        "content": {
+          "type": "string",
+          "description": "User note text content.",
+          "maxLength": 5000
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last modification."
+        }
+      },
+      "required": ["materialId", "courseId", "content", "updatedAt"]
+    },
+    "TestConnection": {
+      "title": "TestConnection",
+      "description": "Heartbeat diagnostic document to verify Firestore connectivity.",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Connectivity test status."
+        }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Contains user profile, preferences, and role metadata."
+    },
+    "/users/{userId}/enrollments/{courseId}": {
+      "schema": { "$ref": "#/entities/UserEnrollment" },
+      "description": "Tracks the student's enrolled courses and completion metrics."
+    },
+    "/users/{userId}/completedMaterials/{materialId}": {
+      "schema": { "$ref": "#/entities/CompletedMaterial" },
+      "description": "Stores completed lesson and material records."
+    },
+    "/users/{userId}/notes/{noteId}": {
+      "schema": { "$ref": "#/entities/UserStudyNote" },
+      "description": "User personal study notes for course lessons."
+    },
+    "/test/{docId}": {
+      "schema": { "$ref": "#/entities/TestConnection" },
+      "description": "Test connection document for validating client connection to Firestore."
+    }
+  }
+}
