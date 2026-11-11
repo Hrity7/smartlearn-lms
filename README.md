@@ -4,6 +4,14 @@ A learning management system with an **Operating Systems theme**. Alongside the 
 
 Built with React, Express, TypeScript and Firebase. Created in Google AI Studio and hardened and extended afterwards.
 
+## Live demo
+
+Try [SmartLearn LMS on Render](https://smartlearn-lms-5kzp.onrender.com).
+
+This free demo uses temporary local data and uploads, which may reset after a restart or idle spin-down.
+
+
+
 ## Features
 
 **Learning platform**
